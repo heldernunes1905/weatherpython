@@ -1,10 +1,15 @@
 import requests
+import sys
+
 
 #my api key
 api_key = '05ce5a1ace570420c5617bdc27db297b'
 
 #use inputs name of city and gets stored in object
-city = input('Enter city name:')
+
+#city = input('Enter city name:') #using python input method
+
+city = sys.argv[1] #this is the variable coming from the php file
 
 #url with the city name and my api_key
 url= f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}'
@@ -24,7 +29,7 @@ if response.status_code == 200:
 
     temp = round(data['main']['temp'] - 273.15,2) #gets the current temperature at the city, gets returned in kelvin so it needs to be converted to celsius and then rounded for only 2 decimal cases
     desc = data['weather'][0]['description'] #description of current weather in city
-    print(f'Temperature: {temp} C')
+    print(f'Temperature: {temp} C ')
     print(f'Description: {desc}')
 else:
     print('Error fetching weather data')
