@@ -1,0 +1,17 @@
+[
+    {
+        "1": "{\"name\": \"lisbon\", \"temp\": 28.49, \"desc\": \"clear sky\", \"date\": \"2023-08-04 17:09:33\"}"
+    },
+    {
+        "2": "{\"name\": \"leicester\", \"temp\": 18.73, \"desc\": \"overcast clouds\", \"date\": \"2023-08-04 17:09:38\"}"
+    },
+    {
+        "3": "{\"name\": \"london\", \"temp\": 18.91, \"desc\": \"overcast clouds\", \"date\": \"2023-08-04 17:09:45\"}"
+    },
+    {
+        "4": "{\"name\": \"machico\", \"temp\": 25.78, \"desc\": \"scattered clouds\", \"date\": \"2023-08-04 17:35:23\"}"
+    },
+    {
+        "5": "{\"name\": \"funchal\", \"temp\": 26.46, \"desc\": \"scattered clouds\", \"date\": \"2023-08-04 17:35:31\"}"
+    }
+]
