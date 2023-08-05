@@ -14,26 +14,30 @@ api_key = '05ce5a1ace570420c5617bdc27db297b'
 id_json = int(sys.argv[1]) #this is the variable coming from the php file
 
 
-
+#opening the file, loading the contents and closing it to make sure no info is not added
 file = open('info.json')
 datajson = json.load(file)
 file.close
 
 
-
+#get the data from the idea taht was inserted
 for dj in datajson:
     id_convert = list(dj.keys())
     if (id_convert[0] == '%d' % id_json):
         chosen_id = dj
         break
 
+#get the data without id
 json_string = chosen_id['%d' % id_json]
 
+#convert data into readable format
 parsed = json.loads(json_string)
 
+#get the current time and convert it to readable format 
 time = datetime.datetime.now()
 formatted_date = time.strftime("%Y-%m-%d %H:%M:%S")
 
+#get the city name from id
 city = parsed['name']
 
 
@@ -57,6 +61,7 @@ if response.status_code == 200:
     temp = round(data['main']['temp'] - 273.15,2) #gets the current temperature at the city, gets returned in kelvin so it needs to be converted to celsius and then rounded for only 2 decimal cases
     desc = data['weather'][0]['description'] #description of current weather in city
 
+    #get other info into the array
     parsed["temp"] = temp
     parsed["desc"] = desc
     parsed["date"] = formatted_date
@@ -70,8 +75,7 @@ else:
 
 updated_json = json.dumps(parsed)
 
-
-# Update the specific element in the datajson list
+# Update the specific element in the datajson list based on id
 for dj in datajson:
     id_convert = list(dj.keys())
     if int(id_convert[0]) == id_json:
@@ -81,5 +85,6 @@ for dj in datajson:
 print(datajson)
 
 # Write the updated data back to the JSON file
+#this updates the whole file and not just some of it so its important to have all of the array here 
 with open('info.json', 'w') as file:
     json.dump(datajson, file, indent=4)
